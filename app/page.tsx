@@ -10,10 +10,10 @@ import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 
    ============================================================================ */
 
 const LINKS = {
-  // TODO — replace these with your real links.
-  email: "mailto:hello@nadjibarahal.dev",
-  github: "https://github.com/your-username",
-  linkedin: "https://linkedin.com/in/your-username",
+  email: "mailto:rahalnadjiba5@gmail.com",
+  phone: "tel:+213540276848",
+  github: "https://github.com/Nadjiba-Rahal",
+  linkedin: "https://linkedin.com/in/nadjiba-rahal",
 };
 
 const NAV_LINKS = [
@@ -90,12 +90,11 @@ const FEATURED_FEATURES = [
 const PROJECTS: Project[] = [
   {
     id: "ishara",
-    kicker: "PRODUCT — AI R&D",
+    kicker: "PRODUCT — AI PLATFORM",
     title: "ISHARA",
     role: "Algerian Sign Language translation",
-    blurb:
-      "AI-powered ALSL translation using a 3D avatar. Sign recognition via computer vision, rendered through HamNoSys/SiGML into CWASA avatar animation, across a dictionary of hundreds of words.",
-    stack: ["MediaPipe", "ONNX", "HamNoSys", "SiGML", "CWASA"],
+    blurb: "A full-stack Algerian Sign Language recognition and translation platform: camera input, landmark extraction, ONNX inference, sign labels and a 3D avatar.",
+    stack: [".NET 10", "ASP.NET Core", "Next.js", "Three.js", "React Native", "PyTorch", "ONNX"],
     variant: "nodes",
     image: "/projects/ishara.webp",
     kind: "product",
@@ -103,74 +102,69 @@ const PROJECTS: Project[] = [
     impact: "Making Algerian Sign Language more visible, searchable and usable.",
   },
   {
-    id: "nas",
-    kicker: "RESEARCH",
-    title: "HARDWARE-AWARE NAS",
-    role: "Neural Architecture Search, multi-objective",
-    blurb:
-      "Multi-objective, hardware-aware Neural Architecture Search for image classification — optimizing accuracy against latency across thousands of candidate CNN architectures, tracked via Pareto front & hypervolume.",
-    stack: ["NAS", "Pareto front", "Hypervolume", "CNNs"],
-    variant: "pareto",
-    image: "/projects/hardware-aware-nas.webp",
-    kind: "research",
-    year: "2025",
-    impact: "Finding models that respect the reality of the hardware they run on.",
-  },
-  {
-    id: "medvlm",
-    kicker: "RESEARCH",
-    title: "MEDICAL VISION-LANGUAGE",
-    role: "Domain & language shift in medical VLMs",
-    blurb:
-      "On the interaction of domain and language shifts in medical vision-language models — evaluated on chest X-rays, across segmentation and shift conditions.",
-    stack: ["Vision-Language", "Chest X-rays", "Segmentation", "Evaluation"],
-    variant: "scan",
-    image: "/projects/medical-vlm.webp",
-    kind: "research",
-    year: "2025",
-    impact: "Testing whether medical AI survives a change in domain and language.",
-  },
-  {
-    id: "dpi",
-    kicker: "PRODUCT",
-    title: "DPI — MEDICAL RECORDS",
-    role: "Digital patient record system",
-    blurb:
-      "A structured digital patient record application — patient data, appointments, prescriptions and exam results in one coherent system.",
-    stack: ["Patient records", "Prescriptions", "Structured data"],
-    variant: "record",
-    image: "/projects/digital-patient-record.webp",
-    kind: "product",
-    year: "2024",
-    impact: "Replacing scattered patient information with one structured clinical view.",
-  },
-  {
-    id: "powerbi",
-    kicker: "DATA",
-    title: "DASHBOARDS & BI",
-    role: "Analytics & business intelligence",
-    blurb:
-      "Dashboard and analytics work: data cleaning, KPI design and visualization built to be read by decision-makers, not just analysts.",
-    stack: ["Power BI", "KPIs", "Data cleaning", "Visualization"],
-    variant: "bars",
-    image: "/projects/dashboards-bi.webp",
-    kind: "data",
-    year: "2024",
-    impact: "Turning operational data into decisions people can act on.",
-  },
-  {
-    id: "jobagent",
-    kicker: "PRODUCT — AI AGENT",
-    title: "JOB INTELLIGENCE AGENT",
-    role: "AI-powered job discovery, Algeria",
-    blurb:
-      "An agent that scrapes, reads and understands job posts across the Algerian market — OCR, semantic search and AI summaries, with scam detection and Telegram alerts.",
-    stack: ["Playwright", "EasyOCR", "Embeddings", "PostgreSQL", "Telegram"],
+    id: "video-assistant",
+    kicker: "PRODUCT — AGENT",
+    title: "AGENTIC VIDEO ASSISTANT",
+    role: "Idea-to-video AI agent",
+    blurb: "An AI agent that researches when needed, improves a prompt, calls a video-generation API, monitors the async job and downloads the result.",
+    stack: ["Python", "smolagents", "Gradio", "DuckDuckGo", "Pytest", "Docker"],
     variant: "pipeline",
-    image: "/projects/job-intelligence-agent.webp",
+    image: "/projects/agentic-video-assistant.webp",
     kind: "product",
     year: "2025",
-    impact: "Compressing a noisy job market into useful, trusted signals.",
+    impact: "Turning one rough idea into a researched, generated and delivered video.",
+  },
+  {
+    id: "enterprise-rag",
+    kicker: "PRODUCT — RAG",
+    title: "ENTERPRISE RAG ENGINE",
+    role: "Multilingual document question-answering",
+    blurb: "A PDF question-answering system with local parsing, chunking and embeddings, hybrid retrieval, grounded LLM answers and citations in English, French and Arabic.",
+    stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Sentence Transformers", "Groq Llama-3"],
+    variant: "window",
+    image: "/projects/enterprise-rag.webp",
+    kind: "product",
+    year: "2025",
+    impact: "Making a multilingual document archive answerable, with evidence attached.",
+  },
+  {
+    id: "ecommerce",
+    kicker: "PRODUCT — COMMERCE",
+    title: "ENTERPRISE E-COMMERCE",
+    role: "Single-tenant white-label commerce platform",
+    blurb: "A customizable storefront and commerce infrastructure built for cash-on-delivery businesses and deployment as an individual store.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB Atlas", "Cloudinary", "Vercel"],
+    variant: "window",
+    image: "/projects/enterprise-ecommerce.webp",
+    kind: "product",
+    year: "2025",
+    impact: "Giving a COD business a storefront it can actually shape around its operation.",
+  },
+  {
+    id: "commerce-intelligence",
+    kicker: "PRODUCT — REAL-TIME DATA",
+    title: "COMMERCE INTELLIGENCE",
+    role: "Real-time event streaming and analytics",
+    blurb: "A live commerce telemetry engine that simulates activity, processes events asynchronously, evaluates fraud risk and displays business signals.",
+    stack: ["Python", "asyncio.Queue", "DuckDB", "Streamlit", "Poisson", "Markov"],
+    variant: "bars",
+    image: "/projects/commerce-intelligence.webp",
+    kind: "product",
+    year: "2025",
+    impact: "Turning simulated transaction streams into a live operational picture.",
+  },
+  {
+    id: "sentiment-bert",
+    kicker: "ML PIPELINE",
+    title: "SENTIMENT ANALYSIS WITH BERT",
+    role: "End-to-end NLP classification",
+    blurb: "A complete sentiment pipeline: normalization, WordPiece tokenization, contextual BERT embeddings and positive/negative classification.",
+    stack: ["Python", "BERT", "Transformers", "WordPiece", "PyTorch", "NLP"],
+    variant: "nodes",
+    image: "/projects/sentiment-bert.webp",
+    kind: "product",
+    year: "2024",
+    impact: "A readable, reproducible path from raw text to a measured prediction.",
   },
 ];
 
@@ -497,7 +491,7 @@ export default function Home() {
           <span
             className="dot"
             aria-hidden="true"
-            style={{ backgroundImage: "url('/nadjiba-logo.svg')" }}
+            style={{ backgroundImage: "url('/nadjiba-logo.png')" }}
           />
           NADJIBA
         </a>
@@ -604,6 +598,12 @@ export default function Home() {
                 </a>
               </div>
             </div>
+
+            <Link href={`/work/${FEATURED_PROJECT.id}`} className="hero-project-preview">
+              <span className="hero-project-label">Currently building / featured product</span>
+              <strong>{FEATURED_PROJECT.title}</strong>
+              <span className="hero-project-arrow">Open case study ↗</span>
+            </Link>
           </div>
 
           <div className="scroll-cue" aria-hidden="true">
@@ -894,6 +894,7 @@ export default function Home() {
             </div>
 
             <div className="contact-links reveal">
+              <a href={LINKS.phone}>+213 540 276 848</a>
               <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
