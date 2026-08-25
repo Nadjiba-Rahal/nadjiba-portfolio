@@ -270,6 +270,7 @@ ul {
   transform: translateY(0);
   transition: transform 0.5s var(--ease), background 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
   border-bottom: 1px solid transparent;
+  gap: clamp(18px, 3vw, 46px);
 }
 
 .nav.scrolled {
@@ -292,6 +293,8 @@ ul {
   display: flex;
   align-items: center;
   gap: 9px;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 .nav-mark .dot {
   width: 28px;
@@ -306,14 +309,16 @@ ul {
 
 .nav-links {
   display: flex;
-  gap: 34px;
+  gap: clamp(18px, 2.5vw, 34px);
+  margin-left: auto;
+  flex: 0 1 auto;
 }
 
 .language-switch {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: 24px;
   font-family: var(--mono);
   font-size: 11px;

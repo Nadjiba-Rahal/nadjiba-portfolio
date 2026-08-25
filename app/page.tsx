@@ -73,7 +73,7 @@ const FEATURED_PROJECT: Project = {
     "A full-stack medical cabinet system. Public booking, real-time availability and a private admin dashboard.",
   stack: ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"],
   variant: "window",
-  image: "/projects/bellevue-dashboard.webp",
+  image: "/projects/cabinet-medical.png",
   kind: "product",
   year: "2026",
   impact: "A complete clinic workflow, from public booking to private operations.",
@@ -97,7 +97,7 @@ const PROJECTS: Project[] = [
     blurb: "A full-stack Algerian Sign Language recognition and translation platform: camera input, landmark extraction, ONNX inference, sign labels and a 3D avatar.",
     stack: [".NET 10", "ASP.NET Core", "Next.js", "Three.js", "React Native", "PyTorch", "ONNX"],
     variant: "nodes",
-    image: "/projects/ishara.webp",
+    image: "/projects/ishara.png",
     kind: "product",
     year: "2025",
     impact: "Making Algerian Sign Language more visible, searchable and usable.",
@@ -136,7 +136,7 @@ const PROJECTS: Project[] = [
     blurb: "A customizable storefront and commerce infrastructure built for cash-on-delivery businesses and deployment as an individual store.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB Atlas", "Cloudinary", "Vercel"],
     variant: "window",
-    image: "/projects/enterprise-ecommerce.webp",
+    image: "/projects/e-commerce.png",
     kind: "product",
     year: "2025",
     impact: "Giving a COD business a storefront it can actually shape around its operation.",
@@ -149,7 +149,7 @@ const PROJECTS: Project[] = [
     blurb: "A live commerce telemetry engine that simulates activity, processes events asynchronously, evaluates fraud risk and displays business signals.",
     stack: ["Python", "asyncio.Queue", "DuckDB", "Streamlit", "Poisson", "Markov"],
     variant: "bars",
-    image: "/projects/commerce-intelligence.webp",
+    image: "/projects/commerce-fraud.png",
     kind: "product",
     year: "2025",
     impact: "Turning simulated transaction streams into a live operational picture.",
@@ -162,7 +162,7 @@ const PROJECTS: Project[] = [
     blurb: "A complete sentiment pipeline: normalization, WordPiece tokenization, contextual BERT embeddings and positive/negative classification.",
     stack: ["Python", "BERT", "Transformers", "WordPiece", "PyTorch", "NLP"],
     variant: "nodes",
-    image: "/projects/sentiment-bert.webp",
+    image: "/projects/bi.png",
     kind: "product",
     year: "2024",
     impact: "A readable, reproducible path from raw text to a measured prediction.",
@@ -522,7 +522,7 @@ export default function Home() {
             aria-hidden="true"
             style={{ backgroundImage: "url('/nadjiba-logo.png')" }}
           />
-          NADJIBA
+          NADJIBA RAHAL
         </a>
 
         <nav className="nav-links" aria-label="Primary">
@@ -595,7 +595,7 @@ export default function Home() {
             <p className="eyebrow">NADJIBA RAHAL / AI &amp; SOFTWARE BUILDER</p>
 
             <div className="hero-identity" aria-label="Nadjiba Rahal portrait">
-              <div className="hero-portrait" style={{ backgroundImage: "url('/nadjiba-portrait.webp')" }} />
+              <div className="hero-portrait" style={{ backgroundImage: "url('/me.jpg')" }} />
               <span className="hero-identity-mark">NR / 26</span>
             </div>
 
