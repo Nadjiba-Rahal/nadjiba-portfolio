@@ -261,7 +261,7 @@ const UI_COPY = {
   en: {
     nav: ["Work", "Services", "About", "Contact"],
     explore: "Explore products",
-    build: "Let&apos;s build something",
+    build: "Let's build something",
     workEyebrow: "The work",
     workTitle: "Built to be used.",
     workNote: "Products first. Research gets its own room. Every project opens up into the decisions, tools and details behind it.",
