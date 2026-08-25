@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 
 /* ============================================================================
    DATA
@@ -573,6 +573,17 @@ export default function Home() {
       <main id="top">
         {/* ------------------------------ HERO ------------------------------ */}
         <section className="hero" aria-label="Introduction">
+          <div className="hero-orbit" aria-hidden="true">
+            <span className="orbit-ring orbit-ring-one" />
+            <span className="orbit-ring orbit-ring-two" />
+            <span className="orbit-core">NR</span>
+            <span className="satellite satellite-one">ISHARA</span>
+            <span className="satellite satellite-two">RAG</span>
+            <span className="satellite satellite-three">LIVE DATA</span>
+          </div>
+          <div className="hero-particles" aria-hidden="true">
+            {Array.from({ length: 18 }, (_, i) => <i key={i} style={{ "--particle": i } as CSSProperties} />)}
+          </div>
           <span className="float-tag tag-ai">AI</span>
           <span className="float-tag tag-data">DATA</span>
           <span className="float-tag tag-code">CODE</span>
