@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 
 /* ============================================================================
@@ -46,6 +47,7 @@ const ABOUT_CELLS = [
 ];
 
 type ProjectVariant = "window" | "nodes" | "pareto" | "scan" | "record" | "bars" | "pipeline";
+type ProjectKind = "product" | "research" | "data";
 
 type Project = {
   id: string;
@@ -56,6 +58,9 @@ type Project = {
   stack: string[];
   variant: ProjectVariant;
   image: string;
+  kind: ProjectKind;
+  year: string;
+  impact: string;
 };
 
 const FEATURED_PROJECT: Project = {
@@ -68,6 +73,9 @@ const FEATURED_PROJECT: Project = {
   stack: ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"],
   variant: "window",
   image: "/projects/bellevue-dashboard.webp",
+  kind: "product",
+  year: "2026",
+  impact: "A complete clinic workflow, from public booking to private operations.",
 };
 
 const FEATURED_FEATURES = [
@@ -90,6 +98,9 @@ const PROJECTS: Project[] = [
     stack: ["MediaPipe", "ONNX", "HamNoSys", "SiGML", "CWASA"],
     variant: "nodes",
     image: "/projects/ishara.webp",
+    kind: "product",
+    year: "2025",
+    impact: "Making Algerian Sign Language more visible, searchable and usable.",
   },
   {
     id: "nas",
@@ -101,6 +112,9 @@ const PROJECTS: Project[] = [
     stack: ["NAS", "Pareto front", "Hypervolume", "CNNs"],
     variant: "pareto",
     image: "/projects/hardware-aware-nas.webp",
+    kind: "research",
+    year: "2025",
+    impact: "Finding models that respect the reality of the hardware they run on.",
   },
   {
     id: "medvlm",
@@ -112,6 +126,9 @@ const PROJECTS: Project[] = [
     stack: ["Vision-Language", "Chest X-rays", "Segmentation", "Evaluation"],
     variant: "scan",
     image: "/projects/medical-vlm.webp",
+    kind: "research",
+    year: "2025",
+    impact: "Testing whether medical AI survives a change in domain and language.",
   },
   {
     id: "dpi",
@@ -123,6 +140,9 @@ const PROJECTS: Project[] = [
     stack: ["Patient records", "Prescriptions", "Structured data"],
     variant: "record",
     image: "/projects/digital-patient-record.webp",
+    kind: "product",
+    year: "2024",
+    impact: "Replacing scattered patient information with one structured clinical view.",
   },
   {
     id: "powerbi",
@@ -134,6 +154,9 @@ const PROJECTS: Project[] = [
     stack: ["Power BI", "KPIs", "Data cleaning", "Visualization"],
     variant: "bars",
     image: "/projects/dashboards-bi.webp",
+    kind: "data",
+    year: "2024",
+    impact: "Turning operational data into decisions people can act on.",
   },
   {
     id: "jobagent",
@@ -145,6 +168,9 @@ const PROJECTS: Project[] = [
     stack: ["Playwright", "EasyOCR", "Embeddings", "PostgreSQL", "Telegram"],
     variant: "pipeline",
     image: "/projects/job-intelligence-agent.webp",
+    kind: "product",
+    year: "2025",
+    impact: "Compressing a noisy job market into useful, trusted signals.",
   },
 ];
 
@@ -230,6 +256,35 @@ const PROCESS = [
   { n: "05", title: "DELIVER", body: "Deploy a usable solution." },
   { n: "06", title: "ITERATE", body: "Improve based on feedback." },
 ];
+
+const UI_COPY = {
+  en: {
+    nav: ["Work", "Services", "About", "Contact"],
+    explore: "Explore products",
+    build: "Let&apos;s build something",
+    workEyebrow: "The work",
+    workTitle: "Built to be used.",
+    workNote: "Products first. Research gets its own room. Every project opens up into the decisions, tools and details behind it.",
+    products: "Products",
+    research: "Research",
+    all: "Everything",
+    open: "Open project",
+    language: "Language",
+  },
+  fr: {
+    nav: ["Projets", "Services", "À propos", "Contact"],
+    explore: "Voir les produits",
+    build: "Construisons quelque chose",
+    workEyebrow: "Le travail",
+    workTitle: "Des produits utiles.",
+    workNote: "Les produits d’abord. La recherche a son propre espace. Chaque projet révèle les choix, outils et détails derrière sa construction.",
+    products: "Produits",
+    research: "Recherche",
+    all: "Tout",
+    open: "Ouvrir le projet",
+    language: "Langue",
+  },
+} as const;
 
 /* ============================================================================
    SMALL VISUAL MOTIFS (pure inline SVG/CSS — no images/libraries)
@@ -335,9 +390,18 @@ export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [openService, setOpenService] = useState<number | null>(0);
+  const [language, setLanguage] = useState<"en" | "fr">("en");
+  const [projectFilter, setProjectFilter] = useState<"all" | ProjectKind>("all");
+  const copy = UI_COPY[language];
+  const visibleProjects = PROJECTS.filter((project) => projectFilter === "all" || project.kind === projectFilter);
 
   /* cursor + spotlight + floating-label parallax, all via CSS custom
      properties on <html> — no re-renders on mousemove */
+  useEffect(() => {
+    const browserLanguage = navigator.language.toLowerCase();
+    if (browserLanguage.startsWith("fr")) setLanguage("fr");
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -441,10 +505,16 @@ export default function Home() {
         <nav className="nav-links" aria-label="Primary">
           {NAV_LINKS.map((l) => (
             <a key={l.href} href={l.href}>
-              {l.label}
+              {copy.nav[NAV_LINKS.indexOf(l)]}
             </a>
           ))}
         </nav>
+
+        <div className="language-switch" aria-label={copy.language}>
+          <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+          <span>/</span>
+          <button className={language === "fr" ? "active" : ""} onClick={() => setLanguage("fr")}>FR</button>
+        </div>
 
         <a
           href="#contact"
@@ -470,11 +540,11 @@ export default function Home() {
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen}>
         {NAV_LINKS.map((l) => (
           <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
-            {l.label}
+            {copy.nav[NAV_LINKS.indexOf(l)]}
           </a>
         ))}
         <a href="#contact" className="mobile-cta" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
-          Let&apos;s talk
+          {copy.build}
         </a>
       </div>
 
@@ -522,7 +592,7 @@ export default function Home() {
                   onMouseMove={magneticMove}
                   onMouseLeave={magneticLeave}
                 >
-                  Explore my work
+                  {copy.explore}
                 </a>
                 <a
                   href="#contact"
@@ -530,7 +600,7 @@ export default function Home() {
                   onMouseMove={magneticMove}
                   onMouseLeave={magneticLeave}
                 >
-                  Let&apos;s build something
+                  {copy.build}
                 </a>
               </div>
             </div>
@@ -583,17 +653,29 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head reveal">
               <div>
-                <p className="eyebrow">Selected work</p>
+                <p className="eyebrow">{copy.workEyebrow}</p>
                 <h2 id="work-title" className="section-title">
-                  Products &amp; <em>research</em>.
+                  {copy.workTitle}
                 </h2>
               </div>
-              <p className="section-note">
-                Product builds I shipped alone, and research work I pursued separately — kept distinct on purpose.
-              </p>
+              <p className="section-note">{copy.workNote}</p>
             </div>
 
-            <div className="work-featured reveal">
+            <div className="project-filter reveal" role="tablist" aria-label="Project categories">
+              {(["all", "product", "research"] as const).map((filter) => (
+                <button
+                  key={filter}
+                  className={projectFilter === filter ? "active" : ""}
+                  onClick={() => setProjectFilter(filter)}
+                  role="tab"
+                  aria-selected={projectFilter === filter}
+                >
+                  {filter === "all" ? copy.all : filter === "product" ? copy.products : copy.research}
+                </button>
+              ))}
+            </div>
+
+            {projectFilter !== "research" && <div className="work-featured reveal">
               <div className="work-featured-visual">
                 <ProjectMotif variant={FEATURED_PROJECT.variant} />
                 <div
@@ -620,8 +702,9 @@ export default function Home() {
                     <span key={s}>{s}</span>
                   ))}
                 </div>
+                <Link className="project-link" href={`/work/${FEATURED_PROJECT.id}`}>{copy.open} <span>↗</span></Link>
               </div>
-            </div>
+            </div>}
 
             <div
               className="work-strip-scroller reveal"
@@ -629,7 +712,7 @@ export default function Home() {
               tabIndex={0}
               aria-label="More projects, scroll horizontally"
             >
-              {PROJECTS.map((p) => (
+              {visibleProjects.map((p) => (
                 <article className="work-card" key={p.id}>
                   <div className="work-card-visual">
                     <ProjectMotif variant={p.variant} />
@@ -644,12 +727,15 @@ export default function Home() {
                     <span>{p.kicker}</span>
                   </p>
                   <h4>{p.title}</h4>
+                  <span className="project-year">{p.year} / {p.kind}</span>
                   <p>{p.blurb}</p>
+                  <p className="project-impact">{p.impact}</p>
                   <div className="stack-row">
                     {p.stack.map((s) => (
                       <span key={s}>{s}</span>
                     ))}
                   </div>
+                  <Link className="project-link" href={`/work/${p.id}`}>{copy.open} <span>↗</span></Link>
                 </article>
               ))}
             </div>
