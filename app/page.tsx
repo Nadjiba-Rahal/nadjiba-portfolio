@@ -240,7 +240,6 @@ const CREDIBILITY = [
   { org: "SONELGAZ", role: "Software / information systems", desc: "Practical, applied software work." },
   { org: "ESI ALGIERS", role: "AI & Software Engineering", desc: "École Supérieure d'Informatique, Algiers." },
   { org: "RESEARCH", role: "Applied AI research projects", desc: "NAS, medical vision-language, sign language AI." },
-  { org: "COMPETITIONS", role: "AI training & competitions", desc: "Applied practice beyond coursework." },
 ];
 
 const PROCESS = [
