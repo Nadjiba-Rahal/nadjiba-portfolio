@@ -162,7 +162,7 @@ const PROJECTS: Project[] = [
     blurb: "A complete sentiment pipeline: normalization, WordPiece tokenization, contextual BERT embeddings and positive/negative classification.",
     stack: ["Python", "BERT", "Transformers", "WordPiece", "PyTorch", "NLP"],
     variant: "nodes",
-    image: "/projects/bi.png",
+    image: "",
     kind: "product",
     year: "2024",
     impact: "A readable, reproducible path from raw text to a measured prediction.",
@@ -737,12 +737,14 @@ export default function Home() {
                 <article className="work-card" key={p.id}>
                   <div className="work-card-visual">
                     <ProjectMotif variant={p.variant} />
-                    <div
-                      className="project-image"
-                      style={{ backgroundImage: `url('${p.image}')` }}
-                      role="img"
-                      aria-label={`${p.title} project preview`}
-                    />
+                    {p.image && (
+                      <div
+                        className="project-image"
+                        style={{ backgroundImage: `url('${p.image}')` }}
+                        role="img"
+                        aria-label={`${p.title} project preview`}
+                      />
+                    )}
                   </div>
                   <p className="kicker">
                     <span>{p.kicker}</span>

@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Nadjiba Rahal / AI & Software Builder",
   description: "Intelligent digital products built with AI, software, data and automation.",
+  icons: { icon: "/nadjiba-logo.png", apple: "/nadjiba-logo.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
