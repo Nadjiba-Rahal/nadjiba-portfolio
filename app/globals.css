@@ -6,14 +6,14 @@
    ========================================================================== */
 
 :root {
-  --bg: #08070d;
-  --bg-soft: #11101b;
-  --card: #151322;
-  --fg: #f5f1ff;
-  --muted: #a39bb8;
-  --muted-dim: #675f7c;
-  --accent: #a98cff;
-  --accent-dim: rgba(169, 140, 255, 0.16);
+  --bg: #0d0c13;
+  --bg-soft: #15131e;
+  --card: #1a1725;
+  --fg: #f3f0f8;
+  --muted: #aaa4b5;
+  --muted-dim: #706a7d;
+  --accent: #b39cff;
+  --accent-dim: rgba(179, 156, 255, 0.13);
   --line: rgba(243, 240, 230, 0.12);
   --line-strong: rgba(243, 240, 230, 0.24);
 
@@ -156,7 +156,7 @@ ul {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(243, 240, 230, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(243, 240, 230, 0.045) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 
@@ -420,7 +420,7 @@ ul {
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 78svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -539,9 +539,9 @@ ul {
 .hero-title {
   max-width: 950px;
   font-size: clamp(54px, 9vw, 132px);
-  font-weight: 700;
-  line-height: 0.86;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 
@@ -759,7 +759,7 @@ ul {
 .section-note {
   max-width: 320px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.7;
 }
 

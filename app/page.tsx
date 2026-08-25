@@ -264,8 +264,8 @@ const UI_COPY = {
     all: "Everything",
     open: "Open project",
     language: "Language",
-    heroTitle: "I build AI products.",
-    heroSub: "Software, data and automation for real problems.",
+    heroTitle: "Software developer. Product builder.",
+    heroSub: "Web, mobile, AI and data systems for real problems.",
     featured: "Featured build",
     aboutEyebrow: "What I build",
     aboutTitle: "Useful systems for ambitious ideas.",
@@ -289,8 +289,8 @@ const UI_COPY = {
     all: "Tout",
     open: "Ouvrir le projet",
     language: "Langue",
-    heroTitle: "Je construis des produits IA.",
-    heroSub: "Logiciel, données et automatisation pour de vrais problèmes.",
+    heroTitle: "Développeuse logiciel. Créatrice de produits.",
+    heroSub: "Web, mobile, IA et données pour de vrais problèmes.",
     featured: "Projet phare",
     aboutEyebrow: "Ce que je construis",
     aboutTitle: "Des systèmes utiles pour les idées ambitieuses.",
@@ -628,11 +628,6 @@ export default function Home() {
               </div>
             </div>
 
-            <Link href={`/work/${FEATURED_PROJECT.id}`} className="hero-project-preview">
-              <span className="hero-project-label">{copy.featured}</span>
-              <strong>{FEATURED_PROJECT.title}</strong>
-              <span className="hero-project-arrow">Open case study ↗</span>
-            </Link>
           </div>
 
           <div className="scroll-cue" aria-hidden="true">
