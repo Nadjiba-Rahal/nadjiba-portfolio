@@ -714,6 +714,19 @@ ul {
   gap: 14px;
   flex-wrap: wrap;
 }
+.hero-cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 4px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: gap 0.3s var(--ease);
+}
+.hero-cv-link:hover { gap: 14px; }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(18px); }

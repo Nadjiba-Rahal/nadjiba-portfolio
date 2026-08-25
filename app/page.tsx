@@ -20,6 +20,7 @@ const NAV_LINKS = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
+  { label: "CV", href: "/cv" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -253,7 +254,7 @@ const PROCESS = [
 
 const UI_COPY = {
   en: {
-    nav: ["Work", "Services", "About", "Contact"],
+    nav: ["Work", "Services", "About", "CV", "Contact"],
     explore: "Explore products",
     build: "Let's build something",
     workEyebrow: "The work",
@@ -278,7 +279,7 @@ const UI_COPY = {
     footerRole: "AI / SOFTWARE / DATA",
   },
   fr: {
-    nav: ["Projets", "Services", "À propos", "Contact"],
+    nav: ["Projets", "Services", "À propos", "CV", "Contact"],
     explore: "Voir les produits",
     build: "Construisons quelque chose",
     workEyebrow: "Le travail",
@@ -625,6 +626,7 @@ export default function Home() {
                 >
                   {copy.build}
                 </a>
+                <a href="/cv" className="hero-cv-link">{language === "fr" ? "Voir mon CV" : "View my CV"} <span>↗</span></a>
               </div>
             </div>
 
