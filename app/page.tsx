@@ -511,7 +511,7 @@ export default function Home() {
         </div>
 
         <a
-          href="#contact"
+          href="/lets-build"
           className="nav-cta magnetic"
           onMouseMove={magneticMove}
           onMouseLeave={magneticLeave}
@@ -537,7 +537,7 @@ export default function Home() {
             {copy.nav[NAV_LINKS.indexOf(l)]}
           </a>
         ))}
-        <a href="#contact" className="mobile-cta" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
+        <a href="/lets-build" className="mobile-cta" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>
           {copy.build}
         </a>
       </div>
@@ -589,7 +589,7 @@ export default function Home() {
                   {copy.explore}
                 </a>
                 <a
-                  href="#contact"
+                  href="/lets-build"
                   className="btn btn-ghost magnetic"
                   onMouseMove={magneticMove}
                   onMouseLeave={magneticLeave}
@@ -876,7 +876,7 @@ export default function Home() {
 
             <div className="contact-actions reveal">
               <a
-                href={LINKS.email}
+                href="/lets-build"
                 className="btn btn-solid magnetic"
                 onMouseMove={magneticMove}
                 onMouseLeave={magneticLeave}
@@ -884,7 +884,7 @@ export default function Home() {
                 Start a project
               </a>
               <a
-                href={LINKS.email}
+                href="/lets-build"
                 className="btn btn-ghost magnetic"
                 onMouseMove={magneticMove}
                 onMouseLeave={magneticLeave}
@@ -894,6 +894,7 @@ export default function Home() {
             </div>
 
             <div className="contact-links reveal">
+              <Link href="/cv">View my CV</Link>
               <a href={LINKS.phone}>+213 540 276 848</a>
               <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
                 GitHub

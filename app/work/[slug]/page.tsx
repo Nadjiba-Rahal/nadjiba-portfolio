@@ -1,143 +1,32 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-type CaseStudy = {
-  title: string;
-  label: string;
-  role: string;
-  year: string;
-  image: string;
-  summary: string;
-  impact: string;
-  stack: string[];
-  details: string[];
-};
+const PROJECTS = {
+  ishara: ["ISHARA", "PRODUCT / AI PLATFORM", "Algerian Sign Language recognition and translation", "A full-stack ALSL platform that captures camera input, extracts hand and pose landmarks, runs an ONNX model, produces a recognized sign label and renders signs through a 3D avatar.", [".NET 10", "ASP.NET Core", "PostgreSQL", "EF Core", "Next.js", "Three.js", "React Native / Expo", "PyTorch", "MediaPipe", "ONNX Runtime", "Docker", "GitHub Actions"], "/projects/ishara.webp"],
+  "video-assistant": ["AGENTIC VIDEO ASSISTANT", "PRODUCT / AI AGENT", "Idea-to-video generation agent", "An agent that researches information when needed, improves the user's prompt, calls a video-generation API, monitors the asynchronous job and downloads the resulting video.", ["Python", "smolagents", "Gradio", "DuckDuckGo", "Video API", "Pytest", "Docker"], "/projects/agentic-video-assistant.webp"],
+  "enterprise-rag": ["ENTERPRISE RAG ENGINE", "PRODUCT / GENAI", "Multilingual document question-answering", "A PDF RAG system that parses documents, chunks and embeds them locally, retrieves context through hybrid search, then generates grounded answers with citations in English, French and Arabic.", ["Python", "FastAPI", "Streamlit", "LangChain", "PyPDFLoader", "Sentence Transformers", "ChromaDB", "Groq Llama-3", "Docker", "Pytest"], "/projects/enterprise-rag.webp"],
+  ecommerce: ["ENTERPRISE E-COMMERCE PLATFORM", "PRODUCT / COMMERCE", "Single-tenant white-label commerce", "A customizable storefront and commerce infrastructure designed for cash-on-delivery businesses and deployment as an individual store.", ["Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "MongoDB Atlas", "Cloudinary", "Vercel"], "/projects/enterprise-ecommerce.webp"],
+  "commerce-intelligence": ["REAL-TIME COMMERCE INTELLIGENCE", "PRODUCT / REAL-TIME DATA", "Event streaming and analytics engine", "A real-time engine that simulates e-commerce activity, processes events asynchronously, evaluates fraud risk and displays live business telemetry using bounded in-memory stream windows.", ["Python", "asyncio.Queue", "DuckDB", "Streamlit", "Risk engines", "Poisson", "Exponential", "Markov"], "/projects/commerce-intelligence.webp"],
+  "sentiment-bert": ["SENTIMENT ANALYSIS WITH BERT", "ML PIPELINE", "End-to-end NLP classification", "A complete sentiment pipeline: text normalization, WordPiece tokenization, contextual BERT embeddings, classification and evaluation for positive and negative sentiment.", ["Python", "BERT", "Transformers", "WordPiece", "PyTorch", "NLP"], "/projects/sentiment-bert.webp"],
+  bellevue: ["BELLEVUE", "PRODUCT / SOLO BUILD", "Medical clinic management platform", "A full-stack medical cabinet website and management system with public booking, real-time availability and a private admin dashboard.", ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"], "/projects/bellevue-dashboard.webp"],
+} as const;
 
-const CASE_STUDIES: Record<string, CaseStudy> = {
-  bellevue: {
-    title: "BELLEVUE",
-    label: "PRODUCT / SOLO BUILD",
-    role: "Medical clinic management platform",
-    year: "2026",
-    image: "/projects/bellevue-dashboard.webp",
-    summary: "A complete medical cabinet experience: public booking on the front, real operations behind it.",
-    impact: "The goal was not another brochure site. Bellevue connects patient appointments, opening hours, authentication and administration in one calm workflow.",
-    stack: ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"],
-    details: ["Appointment booking", "Real-time availability", "Admin dashboard", "Configurable opening hours", "Settings and authentication"],
-  },
-  ishara: {
-    title: "ISHARA",
-    label: "PRODUCT / AI R&D",
-    role: "Algerian Sign Language translation",
-    year: "2025",
-    image: "/projects/ishara.webp",
-    summary: "An AI-powered translation experience that turns recognized signs into animated Algerian Sign Language output.",
-    impact: "The product crosses computer vision, language representation and avatar animation to make a difficult interaction feel immediate.",
-    stack: ["MediaPipe", "ONNX", "HamNoSys", "SiGML", "CWASA"],
-    details: ["Sign recognition", "3D avatar output", "Hundreds of dictionary words", "Real-time processing"],
-  },
-  dpi: {
-    title: "DPI",
-    label: "PRODUCT",
-    role: "Digital patient record system",
-    year: "2024",
-    image: "/projects/digital-patient-record.webp",
-    summary: "A structured digital patient record application for information that needs to stay coherent.",
-    impact: "Patients, appointments, prescriptions and exam results are organized around the people using them, not around disconnected screens.",
-    stack: ["Full-stack web", "Structured data", "Patient records"],
-    details: ["Patient profiles", "Appointment history", "Prescription tracking", "Exam result records"],
-  },
-  powerbi: {
-    title: "DASHBOARDS & BI",
-    label: "PRODUCT / DATA",
-    role: "Analytics and business intelligence",
-    year: "2024",
-    image: "/projects/dashboards-bi.webp",
-    summary: "Dashboard work designed for decisions, with the cleaning and KPI logic underneath the visual layer.",
-    impact: "The valuable part is not the chart. It is making messy operational data readable enough to change what happens next.",
-    stack: ["Power BI", "KPIs", "Data cleaning", "Visualization"],
-    details: ["Data preparation", "KPI definition", "Decision-focused layouts", "Reporting workflows"],
-  },
-  jobagent: {
-    title: "JOB INTELLIGENCE AGENT",
-    label: "PRODUCT / AI AGENT",
-    role: "AI-powered job discovery for Algeria",
-    year: "2025",
-    image: "/projects/job-intelligence-agent.webp",
-    summary: "A pipeline that scrapes, reads and ranks job posts, then sends useful signals instead of noise.",
-    impact: "OCR, semantic search, scam detection and Telegram alerts work together as one focused job discovery product.",
-    stack: ["Playwright", "EasyOCR", "Embeddings", "PostgreSQL", "Telegram"],
-    details: ["Source scraping", "OCR extraction", "Semantic matching", "Scam detection", "Telegram alerts"],
-  },
-  nas: {
-    title: "HARDWARE-AWARE NAS",
-    label: "RESEARCH",
-    role: "Multi-objective neural architecture search",
-    year: "2025",
-    image: "/projects/hardware-aware-nas.webp",
-    summary: "Research on finding image-classification architectures that balance accuracy and latency.",
-    impact: "The work treats deployment constraints as part of the model problem, tracking candidate architectures through Pareto fronts and hypervolume.",
-    stack: ["NAS", "Pareto front", "Hypervolume", "CNNs"],
-    details: ["Thousands of candidate CNNs", "Accuracy and latency objectives", "Pareto-front tracking", "Hardware-aware evaluation"],
-  },
-  medvlm: {
-    title: "MEDICAL VISION-LANGUAGE",
-    label: "RESEARCH",
-    role: "Domain and language shift in medical VLMs",
-    year: "2025",
-    image: "/projects/medical-vlm.webp",
-    summary: "Research evaluating how medical vision-language models behave under domain and language changes.",
-    impact: "The focus is reliability: understanding what shifts when a model leaves the conditions it was trained to expect.",
-    stack: ["Vision-Language", "Chest X-rays", "Segmentation", "Evaluation"],
-    details: ["Chest X-ray evaluation", "Segmentation conditions", "Domain-shift analysis", "Language-shift analysis"],
-  },
-};
-
-export function generateStaticParams() {
-  return Object.keys(CASE_STUDIES).map((slug) => ({ slug }));
-}
+export function generateStaticParams() { return Object.keys(PROJECTS).map((slug) => ({ slug })); }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = CASE_STUDIES[slug];
-
+  const project = PROJECTS[slug as keyof typeof PROJECTS];
   if (!project) notFound();
+  const [title, label, role, summary, stack, image] = project;
 
   return (
     <main className="case-study">
-      <nav className="case-nav">
-        <Link href="/" className="nav-mark"><span className="dot" /> NADJIBA</Link>
-        <Link href="/#work" className="case-back">Back to work <span>↗</span></Link>
-      </nav>
-
+      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" /> NADJIBA</Link><Link href="/#work" className="case-back">Back to work <span>↗</span></Link></nav>
       <div className="wrap case-wrap">
-        <header className="case-header">
-          <p className="eyebrow">{project.label}</p>
-          <p className="case-year">{project.year}</p>
-          <h1>{project.title}</h1>
-          <p className="case-role">{project.role}</p>
-        </header>
-
-        <div className="case-visual" style={{ backgroundImage: `url('${project.image}')` }} role="img" aria-label={`${project.title} preview`} />
-
-        <section className="case-grid" aria-label="Project details">
-          <div>
-            <p className="eyebrow">The brief</p>
-            <h2>{project.summary}</h2>
-          </div>
-          <div className="case-copy">
-            <p>{project.impact}</p>
-            <ul className="case-details">
-              {project.details.map((detail) => <li key={detail}>{detail}</li>)}
-            </ul>
-          </div>
-        </section>
-
-        <section className="case-stack">
-          <p className="eyebrow">Built with</p>
-          <div className="tag-row">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-        </section>
-
+        <header className="case-header"><p className="eyebrow">{label}</p><p className="case-year">2025 / SHIPPED</p><h1>{title}</h1><p className="case-role">{role}</p></header>
+        <div className="case-visual" style={{ backgroundImage: `url('${image}')` }} role="img" aria-label={`${title} project preview`} />
+        <section className="case-grid" aria-label="Project details"><div><p className="eyebrow">What it is</p><h2>{summary}</h2></div><div className="case-copy"><p>This is the kind of work I care about: a real system with a clear user, a difficult technical center and a result that can leave the notebook.</p><ul className="case-details">{stack.map((item) => <li key={item}>{item}</li>)}</ul></div></section>
+        <section className="case-stack"><p className="eyebrow">Technology</p><div className="tag-row">{stack.map((item) => <span key={item}>{item}</span>)}</div></section>
         <Link href="/#work" className="case-next">See more work <span>→</span></Link>
       </div>
     </main>
