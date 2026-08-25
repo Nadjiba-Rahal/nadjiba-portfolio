@@ -264,7 +264,7 @@ const UI_COPY = {
     all: "Everything",
     open: "Open project",
     language: "Language",
-    heroTitle: "Software developer. Product builder.",
+    heroTitle: "Software developer & AI engineer.",
     heroSub: "Web, mobile, AI and data systems for real problems.",
     featured: "Featured build",
     aboutEyebrow: "What I build",
