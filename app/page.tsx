@@ -264,6 +264,18 @@ const UI_COPY = {
     all: "Everything",
     open: "Open project",
     language: "Language",
+    heroTitle: "I turn bold ideas into working products.",
+    heroSub: "AI, software and data systems built for people who need results, not just prototypes.",
+    featured: "Featured build",
+    aboutEyebrow: "What I build",
+    aboutTitle: "Useful systems for ambitious ideas.",
+    aboutNote: "From camera input to a production dashboard, I work across the whole path from difficult problem to usable product.",
+    servicesEyebrow: "Ways to work together",
+    servicesTitle: "Bring the problem.",
+    servicesNote: "A focused build, an AI layer, or a technical partner for the hard part.",
+    contactTitle: "Have something worth building?",
+    contactSub: "Send the context. I will reply with the next practical step.",
+    footerRole: "AI / SOFTWARE / DATA",
   },
   fr: {
     nav: ["Projets", "Services", "À propos", "Contact"],
@@ -277,6 +289,18 @@ const UI_COPY = {
     all: "Tout",
     open: "Ouvrir le projet",
     language: "Langue",
+    heroTitle: "Je transforme les idées fortes en produits utiles.",
+    heroSub: "Des systèmes d’IA, de logiciel et de données conçus pour obtenir des résultats, pas seulement des prototypes.",
+    featured: "Projet phare",
+    aboutEyebrow: "Ce que je construis",
+    aboutTitle: "Des systèmes utiles pour les idées ambitieuses.",
+    aboutNote: "De la caméra au tableau de bord en production, je couvre le chemin complet, du problème complexe au produit utilisable.",
+    servicesEyebrow: "Travaillons ensemble",
+    servicesTitle: "Apportez le problème.",
+    servicesNote: "Un produit ciblé, une couche d’IA ou un partenaire technique pour la partie difficile.",
+    contactTitle: "Un projet qui mérite d’exister ?",
+    contactSub: "Envoyez le contexte. Je vous répondrai avec la prochaine étape concrète.",
+    footerRole: "IA / LOGICIEL / DONNÉES",
   },
 } as const;
 
@@ -395,6 +419,10 @@ export default function Home() {
     const browserLanguage = navigator.language.toLowerCase();
     if (browserLanguage.startsWith("fr")) setLanguage("fr");
   }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -560,24 +588,14 @@ export default function Home() {
             </div>
 
             <h1 className="hero-title">
-              <span className="line">
-                <span>IDEAS</span>
-              </span>
-              <span className="line">
-                <span>
-                  IN. <em>SYSTEMS</em>
-                </span>
-              </span>
-              <span className="line">
-                <span className="outline">OUT.</span>
-              </span>
+              <span className="line"><span>{copy.heroTitle}</span></span>
             </h1>
 
             <div className="hero-sub">
               <p className="hero-descriptor">
                 <b>AI × SOFTWARE × DATA × AUTOMATION</b>
                 <br />
-                I build intelligent digital products — from idea to reality.
+                {copy.heroSub}
               </p>
               <div className="hero-actions">
                 <a
@@ -600,7 +618,7 @@ export default function Home() {
             </div>
 
             <Link href={`/work/${FEATURED_PROJECT.id}`} className="hero-project-preview">
-              <span className="hero-project-label">Currently building / featured product</span>
+              <span className="hero-project-label">{copy.featured}</span>
               <strong>{FEATURED_PROJECT.title}</strong>
               <span className="hero-project-arrow">Open case study ↗</span>
             </Link>
@@ -617,17 +635,12 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head reveal">
               <div>
-                <p className="eyebrow">What I do</p>
+                <p className="eyebrow">{copy.aboutEyebrow}</p>
                 <h2 id="about-title" className="section-title">
-                  I build <em>intelligent</em>
-                  <br />
-                  systems.
+                  {copy.aboutTitle}
                 </h2>
               </div>
-              <p className="section-note">
-                Not just code — a working product. I take an idea or a problem and turn it into something real:
-                intelligent, usable, and shipped.
-              </p>
+              <p className="section-note">{copy.aboutNote}</p>
             </div>
 
             <p className="about-lede reveal">
@@ -747,12 +760,12 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head reveal">
               <div>
-                <p className="eyebrow">How I can help</p>
+                <p className="eyebrow">{copy.servicesEyebrow}</p>
                 <h2 id="services-title" className="section-title">
-                  Six ways to <em>build</em>.
+                  {copy.servicesTitle}
                 </h2>
               </div>
-              <p className="section-note">Click a service to see what it actually covers.</p>
+              <p className="section-note">{copy.servicesNote}</p>
             </div>
 
             <div className="service-list reveal">
@@ -868,11 +881,9 @@ export default function Home() {
               Let&apos;s build
             </p>
             <h2 id="contact-title" className="contact-title reveal">
-              Have a problem
-              <br />
-              <em>worth building?</em>
+              {copy.contactTitle}
             </h2>
-            <p className="contact-sub reveal">Let&apos;s turn it into something real.</p>
+            <p className="contact-sub reveal">{copy.contactSub}</p>
 
             <div className="contact-actions reveal">
               <a
@@ -909,8 +920,8 @@ export default function Home() {
 
       <footer>
         <div>
-          <p className="foot-brand">Nadjiba Rahal</p>
-          <p className="foot-role">AI × Software × Data</p>
+          <p className="foot-brand"><span className="footer-logo" />Nadjiba Rahal</p>
+          <p className="foot-role">{copy.footerRole}</p>
         </div>
         <p className="foot-meta">
           Algiers, Algeria

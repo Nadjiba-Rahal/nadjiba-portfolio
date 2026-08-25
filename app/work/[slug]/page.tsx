@@ -21,7 +21,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="case-study">
-      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" /> NADJIBA</Link><Link href="/#work" className="case-back">Back to work <span>↗</span></Link></nav>
+      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" style={{ backgroundImage: "url('/nadjiba-logo.png')" }} /> NADJIBA</Link><Link href="/#work" className="case-back">Back to work <span>↗</span></Link></nav>
       <div className="wrap case-wrap">
         <header className="case-header"><p className="eyebrow">{label}</p><p className="case-year">2025 / SHIPPED</p><h1>{title}</h1><p className="case-role">{role}</p></header>
         <div className="case-visual" style={{ backgroundImage: `url('${image}')` }} role="img" aria-label={`${title} project preview`} />

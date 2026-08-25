@@ -5,7 +5,7 @@ export const metadata = { title: "CV — Nadjiba Rahal" };
 export default function CvPage() {
   return (
     <main className="cv-page">
-      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" /> NADJIBA</Link><Link href="/#work" className="case-back">Back to portfolio <span>↗</span></Link></nav>
+      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" style={{ backgroundImage: "url('/nadjiba-logo.png')" }} /> NADJIBA</Link><Link href="/#work" className="case-back">Back to portfolio <span>↗</span></Link></nav>
       <div className="wrap cv-wrap">
         <p className="eyebrow">Curriculum vitae</p>
         <h1>The person<br /><em>behind the systems.</em></h1>

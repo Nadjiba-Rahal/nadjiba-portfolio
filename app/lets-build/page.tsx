@@ -26,7 +26,7 @@ export default function LetsBuildPage() {
 
   return (
     <main className="brief-page">
-      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" /> NADJIBA</Link><Link href="/#work" className="case-back">Back to portfolio <span>↗</span></Link></nav>
+      <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" style={{ backgroundImage: "url('/nadjiba-logo.png')" }} /> NADJIBA</Link><Link href="/#work" className="case-back">Back to portfolio <span>↗</span></Link></nav>
       <div className="wrap brief-wrap">
         <p className="eyebrow">Let&apos;s build</p>
         <h1>Bring me the<br /><em>interesting problem.</em></h1>

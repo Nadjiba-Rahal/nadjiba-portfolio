@@ -428,6 +428,29 @@ ul {
   padding-bottom: 60px;
   overflow: hidden;
 }
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: min(58vw, 760px);
+  height: min(58vw, 760px);
+  border: 1px solid var(--accent-dim);
+  border-radius: 50%;
+  right: -10vw;
+  top: 15%;
+  animation: orbit-spin 18s linear infinite;
+  pointer-events: none;
+}
+.hero::after {
+  width: min(38vw, 500px);
+  height: min(38vw, 500px);
+  right: 5vw;
+  top: 27%;
+  border-color: var(--line-strong);
+  animation-direction: reverse;
+  animation-duration: 12s;
+}
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
 
 .hero-inner {
   position: relative;
@@ -435,7 +458,8 @@ ul {
 }
 
 .hero-title {
-  font-size: clamp(58px, 12vw, 168px);
+  max-width: 950px;
+  font-size: clamp(54px, 9vw, 132px);
   font-weight: 700;
   line-height: 0.86;
   letter-spacing: -0.03em;
@@ -466,6 +490,17 @@ ul {
   -webkit-text-stroke: 1.5px var(--fg);
   color: transparent;
 }
+
+.hero-title .line span::after {
+  content: "✦";
+  display: inline-block;
+  margin-left: 0.12em;
+  color: var(--accent);
+  font-size: 0.35em;
+  vertical-align: top;
+  animation: star-pulse 2.5s ease-in-out infinite;
+}
+@keyframes star-pulse { 50% { transform: scale(1.35) rotate(18deg); opacity: 0.55; } }
 
 @keyframes line-in {
   to { transform: translateY(0); }
@@ -1370,7 +1405,11 @@ footer {
 }
 footer .foot-brand {
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.footer-logo { width: 24px; height: 24px; display: inline-block; background: url('/nadjiba-logo.png') center / contain no-repeat; }
 footer .foot-role {
   font-family: var(--mono);
   font-size: 11px;
