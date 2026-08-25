@@ -132,6 +132,64 @@ ul {
   white-space: nowrap;
 }
 
+.whatsapp-planet {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 120;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  color: var(--bg);
+  filter: drop-shadow(0 10px 22px rgba(179, 156, 255, 0.24));
+  transition: transform 0.35s var(--ease), filter 0.35s ease;
+}
+.whatsapp-planet:hover { transform: translateY(-7px) rotate(8deg); filter: drop-shadow(0 16px 28px rgba(179, 156, 255, 0.4)); }
+.planet-core {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: inset -7px -6px 0 rgba(78, 52, 135, 0.18), 0 0 0 5px var(--bg);
+}
+.planet-ring {
+  position: absolute;
+  width: 72px;
+  height: 25px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  transform: rotate(-28deg);
+  animation: whatsapp-orbit 5s linear infinite;
+}
+.planet-ring::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 1px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg);
+}
+.planet-label {
+  position: absolute;
+  right: 3px;
+  bottom: -18px;
+  color: var(--muted);
+  font: 9px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+.whatsapp-planet:hover .planet-label,
+.whatsapp-planet:focus-visible .planet-label { opacity: 1; transform: translateY(0); }
+@keyframes whatsapp-orbit { to { transform: rotate(332deg); } }
+
 /* scroll-reveal primitive */
 .reveal {
   opacity: 0;
@@ -1558,6 +1616,8 @@ footer .foot-meta {
   .section-head { flex-direction: column; align-items: flex-start; }
   footer { flex-direction: column; align-items: flex-start; }
   footer .foot-meta { text-align: left; }
+  .whatsapp-planet { right: 16px; bottom: 16px; transform: scale(0.88); transform-origin: bottom right; }
+  .whatsapp-planet:hover { transform: scale(0.88) translateY(-7px) rotate(8deg); }
 }
 
 /* ------------------------------ reduced motion -------------------------------- */
