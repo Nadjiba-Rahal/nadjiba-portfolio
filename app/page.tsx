@@ -576,7 +576,7 @@ export default function Home() {
           <div className="hero-orbit" aria-hidden="true">
             <span className="orbit-ring orbit-ring-one" />
             <span className="orbit-ring orbit-ring-two" />
-            <span className="orbit-core">NR</span>
+            <span className="orbit-core" aria-label="Nadjiba Rahal logo" />
             <span className="satellite satellite-one">ISHARA</span>
             <span className="satellite satellite-two">RAG</span>
             <span className="satellite satellite-three">LIVE DATA</span>

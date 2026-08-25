@@ -495,9 +495,7 @@ ul {
   place-items: center;
   border: 1px solid var(--accent);
   border-radius: 50%;
-  color: var(--accent);
-  font: 12px var(--mono);
-  letter-spacing: 0.12em;
+  background: var(--bg) url('/nadjiba-logo.png') center / 72% auto no-repeat;
   animation: core-pulse 2.5s ease-in-out infinite;
 }
 .satellite {
@@ -1536,13 +1534,16 @@ footer .foot-meta {
 }
 
 @media (max-width: 620px) {
-  .hero { padding-top: 100px; }
+  .hero { min-height: 92svh; padding: 96px 0 40px; }
   .hero-identity { position: relative; top: auto; right: auto; margin: 30px 0 20px; transform: rotate(2deg); }
   .hero-portrait { width: 76px; height: 96px; }
   .hero-sub { flex-direction: column; align-items: flex-start; }
+  .hero-actions { width: 100%; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-project-preview { grid-template-columns: 1fr auto; gap: 8px; }
   .hero-project-label { grid-column: 1 / -1; }
   .hero-orbit { width: 82vw; right: -28vw; top: 30%; opacity: 0.7; }
+  .hero-title { max-width: 100%; font-size: clamp(42px, 13vw, 76px); }
   .satellite-three { display: none; }
   .project-filter { overflow-x: auto; padding-bottom: 4px; }
   .case-header { display: block; }
