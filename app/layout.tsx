@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nadjiba Rahal — AI & Software Builder",
+  title: "Nadjiba Rahal / AI & Software Builder",
   description: "Intelligent digital products built with AI, software, data and automation.",
 };
 

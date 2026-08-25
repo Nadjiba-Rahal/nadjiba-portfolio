@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "CV — Nadjiba Rahal" };
+export const metadata = { title: "CV / Nadjiba Rahal" };
 
 export default function CvPage() {
   return (

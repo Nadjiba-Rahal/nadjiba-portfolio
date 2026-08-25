@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties, type MouseEvent as Rea
 
 /* ============================================================================
    DATA
-   Edit the content below directly — this file intentionally keeps
+  Edit the content below directly. This file keeps
    everything in one place so it's easy to update.
    ============================================================================ */
 
@@ -65,11 +65,11 @@ type Project = {
 
 const FEATURED_PROJECT: Project = {
   id: "bellevue",
-  kicker: "PRODUCT — SOLO BUILD",
+  kicker: "PRODUCT / SOLO BUILD",
   title: "BELLEVUE",
   role: "Medical clinic management platform",
   blurb:
-    "A full-stack medical cabinet website and management system — public booking on the front, a real admin dashboard behind it. Built end-to-end, alone.",
+    "A full-stack medical cabinet system. Public booking, real-time availability and a private admin dashboard.",
   stack: ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"],
   variant: "window",
   image: "/projects/bellevue-dashboard.webp",
@@ -90,7 +90,7 @@ const FEATURED_FEATURES = [
 const PROJECTS: Project[] = [
   {
     id: "ishara",
-    kicker: "PRODUCT — AI PLATFORM",
+    kicker: "PRODUCT / AI PLATFORM",
     title: "ISHARA",
     role: "Algerian Sign Language translation",
     blurb: "A full-stack Algerian Sign Language recognition and translation platform: camera input, landmark extraction, ONNX inference, sign labels and a 3D avatar.",
@@ -103,7 +103,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "video-assistant",
-    kicker: "PRODUCT — AGENT",
+    kicker: "PRODUCT / AGENT",
     title: "AGENTIC VIDEO ASSISTANT",
     role: "Idea-to-video AI agent",
     blurb: "An AI agent that researches when needed, improves a prompt, calls a video-generation API, monitors the async job and downloads the result.",
@@ -116,7 +116,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "enterprise-rag",
-    kicker: "PRODUCT — RAG",
+    kicker: "PRODUCT / RAG",
     title: "ENTERPRISE RAG ENGINE",
     role: "Multilingual document question-answering",
     blurb: "A PDF question-answering system with local parsing, chunking and embeddings, hybrid retrieval, grounded LLM answers and citations in English, French and Arabic.",
@@ -129,7 +129,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "ecommerce",
-    kicker: "PRODUCT — COMMERCE",
+    kicker: "PRODUCT / COMMERCE",
     title: "ENTERPRISE E-COMMERCE",
     role: "Single-tenant white-label commerce platform",
     blurb: "A customizable storefront and commerce infrastructure built for cash-on-delivery businesses and deployment as an individual store.",
@@ -142,7 +142,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "commerce-intelligence",
-    kicker: "PRODUCT — REAL-TIME DATA",
+    kicker: "PRODUCT / REAL-TIME DATA",
     title: "COMMERCE INTELLIGENCE",
     role: "Real-time event streaming and analytics",
     blurb: "A live commerce telemetry engine that simulates activity, processes events asynchronously, evaluates fraud risk and displays business signals.",
@@ -305,7 +305,7 @@ const UI_COPY = {
 } as const;
 
 /* ============================================================================
-   SMALL VISUAL MOTIFS (pure inline SVG/CSS — no images/libraries)
+  SMALL VISUAL MOTIFS (pure inline SVG/CSS)
    ============================================================================ */
 
 function ProjectMotif({ variant }: { variant: ProjectVariant }) {
@@ -414,7 +414,7 @@ export default function Home() {
   const visibleProjects = PROJECTS.filter((project) => projectFilter === "all" || project.kind === projectFilter);
 
   /* cursor + spotlight + floating-label parallax, all via CSS custom
-     properties on <html> — no re-renders on mousemove */
+    properties on <html>. No re-renders on mousemove. */
   useEffect(() => {
     const browserLanguage = navigator.language.toLowerCase();
     if (browserLanguage.startsWith("fr")) setLanguage("fr");
@@ -515,7 +515,7 @@ export default function Home() {
 
       {/* ------------------------------ NAV ------------------------------ */}
       <header className="nav" ref={navRef}>
-        <a href="#top" className="nav-mark" aria-label="Nadjiba Rahal — home">
+        <a href="#top" className="nav-mark" aria-label="Nadjiba Rahal home">
           <span
             className="dot"
             aria-hidden="true"
@@ -591,7 +591,7 @@ export default function Home() {
           <span className="float-tag tag-product">PRODUCT</span>
 
           <div className="wrap hero-inner">
-            <p className="eyebrow">NADJIBA RAHAL — AI &amp; SOFTWARE BUILDER</p>
+            <p className="eyebrow">NADJIBA RAHAL / AI &amp; SOFTWARE BUILDER</p>
 
             <div className="hero-identity" aria-label="Nadjiba Rahal portrait">
               <div className="hero-portrait" style={{ backgroundImage: "url('/nadjiba-portrait.webp')" }} />
@@ -651,8 +651,8 @@ export default function Home() {
 
             <p className="about-lede reveal">
               My work spans <b>Artificial Intelligence</b>, <b>Machine Learning</b>, <b>Computer Vision</b> and{" "}
-              <b>NLP</b>, alongside <b>full-stack development</b>, <b>dashboards</b> and <b>automation</b> — I build
-              intelligent web applications, AI-powered workflows, data-driven tools and custom software.
+              <b>NLP</b>, plus <b>full-stack development</b>, <b>dashboards</b> and <b>automation</b>. I build
+              web applications, AI workflows, data tools and custom software.
             </p>
 
             <div className="about-grid">

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NADJIBA RAHAL — PORTFOLIO
+  NADJIBA RAHAL / PORTFOLIO
    Visual concept: SIGNAL → SYSTEM
    Raw data/AI signal resolving into a built, working system.
    Palette: near-black / warm off-white / one acid-signal accent.
@@ -931,7 +931,7 @@ ul {
   color: var(--muted);
 }
 .work-featured-copy .feat-list li::before {
-  content: "— ";
+  content: "+ ";
   color: var(--accent);
 }
 
