@@ -39,11 +39,13 @@ export async function POST(request: Request) {
     });
 
     if (result.error) {
-      return Response.json({ error: "The email could not be sent." }, { status: 502 });
+      console.error("Resend email error:", result.error.message);
+      return Response.json({ error: result.error.message }, { status: 502 });
     }
 
     return Response.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error("Contact form error:", error);
     return Response.json({ error: "The email could not be sent." }, { status: 500 });
   }
 }

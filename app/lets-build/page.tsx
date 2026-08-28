@@ -6,6 +6,7 @@ import { SiteLanguage, useSiteLanguage } from "../components/site-language";
 
 export default function LetsBuildPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const { language } = useSiteLanguage();
   const isFrench = language === "fr";
 
@@ -13,15 +14,19 @@ export default function LetsBuildPage() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     setStatus("sending");
+    setErrorMessage("");
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(data.entries())),
       });
+      const result = await response.json();
       setStatus(response.ok ? "sent" : "error");
+      if (!response.ok) setErrorMessage(result.error || "The email could not be sent.");
     } catch {
       setStatus("error");
+      setErrorMessage(isFrench ? "Service email indisponible. Réessayez." : "The email service is unavailable. Please try again.");
     }
   }
 
@@ -46,7 +51,7 @@ export default function LetsBuildPage() {
                 ? (isFrench ? "Message envoyé" : "Message sent")
                 : (isFrench ? "Envoyer le brief" : "Send project brief")}
           </button>
-          {status === "error" && <p role="alert">{isFrench ? "Impossible d’envoyer le message. Réessayez." : "The message could not be sent. Please try again."}</p>}
+          {status === "error" && <p role="alert">{errorMessage || (isFrench ? "Impossible d’envoyer le message. Réessayez." : "The message could not be sent. Please try again.")}</p>}
         </form>
       </div>
     </main>
