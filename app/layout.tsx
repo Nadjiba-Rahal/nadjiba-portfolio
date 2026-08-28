@@ -8,8 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Nadjiba Rahal / AI & Software Builder",
-  description: "Intelligent digital products built with AI, software, data and automation.",
-  icons: { icon: "/nadjiba-logo.png", apple: "/nadjiba-logo.png" },
+  description: "Intelligent digital projects built with AI, software, data and automation.",
+  icons: {
+    icon: [{ url: "/nadjiba-logo.png", type: "image/png" }],
+    apple: [{ url: "/nadjiba-logo.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

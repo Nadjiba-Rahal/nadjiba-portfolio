@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
+import { useSiteLanguage } from "./components/site-language";
 
 /* ============================================================================
    DATA
@@ -33,12 +34,12 @@ const ABOUT_CELLS = [
   {
     n: "02",
     title: "SOFTWARE",
-    body: "Full-stack web, backend and mobile products.",
+    body: "Full-stack web, backend and mobile projects.",
   },
   {
     n: "03",
     title: "DATA",
-    body: "Dashboards and data products for better decisions.",
+    body: "Dashboards and data projects for better decisions.",
   },
   {
     n: "04",
@@ -48,7 +49,7 @@ const ABOUT_CELLS = [
 ];
 
 type ProjectVariant = "window" | "nodes" | "pareto" | "scan" | "record" | "bars" | "pipeline";
-type ProjectKind = "product" | "research" | "data";
+type ProjectKind = "project" | "research" | "data";
 
 type Project = {
   id: string;
@@ -66,7 +67,7 @@ type Project = {
 
 const FEATURED_PROJECT: Project = {
   id: "bellevue",
-  kicker: "PRODUCT / SOLO BUILD",
+  kicker: "PROJECT / SOLO BUILD",
   title: "BELLEVUE",
   role: "Medical clinic management platform",
   blurb:
@@ -74,7 +75,7 @@ const FEATURED_PROJECT: Project = {
   stack: ["Next.js", "Server Actions", "PostgreSQL / Neon", "Auth"],
   variant: "window",
   image: "/projects/cabinet-medical.png",
-  kind: "product",
+  kind: "project",
   year: "2026",
   impact: "A complete clinic workflow, from public booking to private operations.",
 };
@@ -91,66 +92,66 @@ const FEATURED_FEATURES = [
 const PROJECTS: Project[] = [
   {
     id: "ishara",
-    kicker: "PRODUCT / AI PLATFORM",
+    kicker: "PROJECT / AI PLATFORM",
     title: "ISHARA",
     role: "Algerian Sign Language translation",
     blurb: "A full-stack Algerian Sign Language recognition and translation platform: camera input, landmark extraction, ONNX inference, sign labels and a 3D avatar.",
     stack: [".NET 10", "ASP.NET Core", "Next.js", "Three.js", "React Native", "PyTorch", "ONNX"],
     variant: "nodes",
     image: "/projects/ishara.png",
-    kind: "product",
+    kind: "project",
     year: "2025",
     impact: "Making Algerian Sign Language more visible, searchable and usable.",
   },
   {
     id: "video-assistant",
-    kicker: "PRODUCT / AGENT",
+    kicker: "PROJECT / AGENT",
     title: "AGENTIC VIDEO ASSISTANT",
     role: "Idea-to-video AI agent",
     blurb: "An AI agent that researches when needed, improves a prompt, calls a video-generation API, monitors the async job and downloads the result.",
     stack: ["Python", "smolagents", "Gradio", "DuckDuckGo", "Pytest", "Docker"],
     variant: "pipeline",
     image: "/projects/agentic-video-assistant.webp",
-    kind: "product",
+    kind: "project",
     year: "2025",
     impact: "Turning one rough idea into a researched, generated and delivered video.",
   },
   {
     id: "enterprise-rag",
-    kicker: "PRODUCT / RAG",
+    kicker: "PROJECT / RAG",
     title: "ENTERPRISE RAG ENGINE",
     role: "Multilingual document question-answering",
     blurb: "A PDF question-answering system with local parsing, chunking and embeddings, hybrid retrieval, grounded LLM answers and citations in English, French and Arabic.",
     stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Sentence Transformers", "Groq Llama-3"],
     variant: "window",
     image: "/projects/enterprise-rag.webp",
-    kind: "product",
+    kind: "project",
     year: "2025",
     impact: "Making a multilingual document archive answerable, with evidence attached.",
   },
   {
     id: "ecommerce",
-    kicker: "PRODUCT / COMMERCE",
+    kicker: "PROJECT / COMMERCE",
     title: "ENTERPRISE E-COMMERCE",
     role: "Single-tenant white-label commerce platform",
     blurb: "A customizable storefront and commerce infrastructure built for cash-on-delivery businesses and deployment as an individual store.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB Atlas", "Cloudinary", "Vercel"],
     variant: "window",
     image: "/projects/e-commerce.png",
-    kind: "product",
+    kind: "project",
     year: "2025",
     impact: "Giving a COD business a storefront it can actually shape around its operation.",
   },
   {
     id: "commerce-intelligence",
-    kicker: "PRODUCT / REAL-TIME DATA",
+    kicker: "PROJECT / REAL-TIME DATA",
     title: "COMMERCE INTELLIGENCE",
     role: "Real-time event streaming and analytics",
     blurb: "A live commerce telemetry engine that simulates activity, processes events asynchronously, evaluates fraud risk and displays business signals.",
     stack: ["Python", "asyncio.Queue", "DuckDB", "Streamlit", "Poisson", "Markov"],
     variant: "bars",
     image: "/projects/commerce-fraud.png",
-    kind: "product",
+    kind: "project",
     year: "2025",
     impact: "Turning simulated transaction streams into a live operational picture.",
   },
@@ -163,7 +164,7 @@ const PROJECTS: Project[] = [
     stack: ["Python", "BERT", "Transformers", "WordPiece", "PyTorch", "NLP"],
     variant: "nodes",
     image: "",
-    kind: "product",
+    kind: "project",
     year: "2024",
     impact: "A readable, reproducible path from raw text to a measured prediction.",
   },
@@ -173,7 +174,7 @@ const SERVICES = [
   {
     n: "01",
     title: "AI INTEGRATION",
-    body: "Integrate AI into existing products and workflows.",
+    body: "Integrate AI into existing projects and workflows.",
     examples: ["LLM integration", "AI assistants", "Document processing", "NLP", "Computer vision", "Intelligent search"],
   },
   {
@@ -191,7 +192,7 @@ const SERVICES = [
   {
     n: "04",
     title: "DATA & DASHBOARDS",
-    body: "Build dashboards and data products.",
+    body: "Build dashboards and data projects.",
     examples: ["Power BI", "Analytics dashboards", "Data visualization", "Reporting", "KPI systems"],
   },
   {
@@ -202,9 +203,9 @@ const SERVICES = [
   },
   {
     n: "06",
-    title: "MOBILE / DIGITAL PRODUCTS",
+    title: "MOBILE / DIGITAL PROJECTS",
     body: "Modern mobile and digital applications.",
-    examples: ["Cross-platform apps", "AI-powered features", "Product UI"],
+    examples: ["Cross-platform apps", "AI-powered features", "Project UI"],
   },
 ];
 
@@ -245,7 +246,7 @@ const CREDIBILITY = [
 const PROCESS = [
   { n: "01", title: "DISCOVER", body: "Understand the problem." },
   { n: "02", title: "DESIGN", body: "Turn the idea into a system." },
-  { n: "03", title: "BUILD", body: "Develop the product." },
+  { n: "03", title: "BUILD", body: "Develop the project." },
   { n: "04", title: "INTEGRATE", body: "Connect AI, data and automation." },
   { n: "05", title: "DELIVER", body: "Deploy a usable solution." },
   { n: "06", title: "ITERATE", body: "Improve based on feedback." },
@@ -254,12 +255,12 @@ const PROCESS = [
 const UI_COPY = {
   en: {
     nav: ["Work", "Services", "About", "CV", "Contact"],
-    explore: "Explore products",
+    explore: "Explore projects",
     build: "Let's build something",
     workEyebrow: "The work",
     workTitle: "Built to be used.",
-    workNote: "Products first. Research stays separate.",
-    products: "Products",
+    workNote: "Projects first. Research stays separate.",
+    products: "Projects",
     research: "Research",
     all: "Everything",
     open: "Open project",
@@ -279,12 +280,12 @@ const UI_COPY = {
   },
   fr: {
     nav: ["Projets", "Services", "À propos", "CV", "Contact"],
-    explore: "Voir les produits",
+    explore: "Voir les projets",
     build: "Construisons quelque chose",
     workEyebrow: "Le travail",
-    workTitle: "Des produits utiles.",
-    workNote: "Les produits d’abord. La recherche à part.",
-    products: "Produits",
+    workTitle: "Des projets utiles.",
+    workNote: "Les projets d’abord. La recherche à part.",
+    products: "Projets",
     research: "Recherche",
     all: "Tout",
     open: "Ouvrir le projet",
@@ -408,22 +409,13 @@ export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [openService, setOpenService] = useState<number | null>(0);
-  const [language, setLanguage] = useState<"en" | "fr">("en");
+  const { language, setLanguage } = useSiteLanguage();
   const [projectFilter, setProjectFilter] = useState<"all" | ProjectKind>("all");
   const copy = UI_COPY[language];
   const visibleProjects = PROJECTS.filter((project) => projectFilter === "all" || project.kind === projectFilter);
 
   /* cursor + spotlight + floating-label parallax, all via CSS custom
     properties on <html>. No re-renders on mousemove. */
-  useEffect(() => {
-    const browserLanguage = navigator.language.toLowerCase();
-    if (browserLanguage.startsWith("fr")) setLanguage("fr");
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
   useEffect(() => {
     const root = document.documentElement;
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -588,7 +580,7 @@ export default function Home() {
           <span className="float-tag tag-data">DATA</span>
           <span className="float-tag tag-code">CODE</span>
           <span className="float-tag tag-automation">AUTOMATION</span>
-          <span className="float-tag tag-product">PRODUCT</span>
+          <span className="float-tag tag-product">PROJECT</span>
 
           <div className="wrap hero-inner">
             <p className="eyebrow">NADJIBA RAHAL / AI &amp; SOFTWARE BUILDER</p>
@@ -682,7 +674,7 @@ export default function Home() {
             </div>
 
             <div className="project-filter reveal" role="tablist" aria-label="Project categories">
-              {(["all", "product", "research"] as const).map((filter) => (
+              {(["all", "project", "research"] as const).map((filter) => (
                 <button
                   key={filter}
                   className={projectFilter === filter ? "active" : ""}
@@ -690,7 +682,7 @@ export default function Home() {
                   role="tab"
                   aria-selected={projectFilter === filter}
                 >
-                  {filter === "all" ? copy.all : filter === "product" ? copy.products : copy.research}
+                  {filter === "all" ? copy.all : filter === "project" ? copy.products : copy.research}
                 </button>
               ))}
             </div>
