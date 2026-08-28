@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Contact form email delivery
+
+The project brief form sends submissions directly to `rahalnadjiba5@gmail.com` through [Resend](https://resend.com/).
+
+1. Create a Resend account and verify the sending domain, or use the temporary Resend sender while testing.
+2. Create an API key in Resend.
+3. Add `RESEND_API_KEY=your_api_key` to a local `.env.local` file. Never commit this file or expose the key with a `NEXT_PUBLIC_` prefix.
+4. Add the same variable in your hosting provider's project environment settings before deploying.
+
+Each submission includes the name, email, request type, budget, timeline, and project details. The visitor's email is set as the reply-to address.
+
 ## Getting Started
 
 First, run the development server:
