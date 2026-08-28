@@ -15,7 +15,16 @@ export default function CvPage() {
           <a className="cv-card" href="/cv-nadjiba-rahal-en.pdf" target="_blank" rel="noreferrer"><span>EN / 01</span><strong>English CV</strong><small>Open PDF ↗</small></a>
           <a className="cv-card" href="/cv-nadjiba-rahal-fr.pdf" target="_blank" rel="noreferrer"><span>FR / 02</span><strong>CV français</strong><small>Ouvrir le PDF ↗</small></a>
         </div>
-        <p className="cv-missing">Place your files in <strong>public/cv-nadjiba-rahal-en.pdf</strong> and <strong>public/cv-nadjiba-rahal-fr.pdf</strong>.</p>
+        <div className="cv-previews">
+          <section className="cv-preview" aria-labelledby="cv-english-preview">
+            <h2 id="cv-english-preview">English CV</h2>
+            <iframe src="/cv-nadjiba-rahal-en.pdf" title="English CV preview" />
+          </section>
+          <section className="cv-preview" aria-labelledby="cv-french-preview">
+            <h2 id="cv-french-preview">CV français</h2>
+            <iframe src="/cv-nadjiba-rahal-fr.pdf" title="French CV preview" />
+          </section>
+        </div>
       </div>
     </main>
   );
