@@ -1140,15 +1140,18 @@ ul {
 .brief-form input:focus, .brief-form select:focus, .brief-form textarea:focus { border-color: var(--accent); }
 .brief-wide { grid-column: 1 / -1; }
 .brief-form .btn { width: fit-content; margin-top: 8px; border: 0; }
-.cv-options { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 16px; margin-top: 70px; }
-.cv-card { min-height: 220px; padding: 24px; border: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.3s ease, transform 0.3s var(--ease); }
-.cv-card:hover { border-color: var(--accent); transform: translateY(-6px); }
-.cv-card span, .cv-card small { color: var(--muted); font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
-.cv-card strong { font-size: 30px; letter-spacing: -0.03em; }
-.cv-card small { color: var(--accent); }
-.cv-previews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 70px; }
-.cv-preview h2 { margin-bottom: 14px; color: var(--muted); font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
-.cv-preview iframe { display: block; width: 100%; height: min(78vw, 900px); min-height: 620px; border: 1px solid var(--line); background: #fff; }
+.cv-viewer { margin-top: 70px; max-width: 1120px; }
+.cv-selector { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cv-selector-button { min-height: 128px; padding: 20px; border: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; text-align: left; transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s var(--ease); }
+.cv-selector-button:hover, .cv-selector-button.active { border-color: var(--accent); background: var(--accent-dim); }
+.cv-selector-button:hover { transform: translateY(-3px); }
+.cv-selector-button span, .cv-selector-button small { color: var(--muted); font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.cv-selector-button strong { font-size: 25px; letter-spacing: -0.03em; }
+.cv-selector-button small { color: var(--accent); }
+.cv-viewer-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 52px 0 18px; }
+.cv-viewer-heading h2 { margin-top: 12px; font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.04em; }
+.cv-open-link { color: var(--accent); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.cv-viewer iframe { display: block; width: 100%; height: min(105vw, 1320px); min-height: 760px; border: 1px solid var(--line); background: #fff; }
 .work-card .stack-row {
   display: flex;
   flex-wrap: wrap;
@@ -1629,7 +1632,10 @@ footer .foot-meta {
   .case-visual { min-height: 58vw; }
   .case-grid { grid-template-columns: 1fr; padding: 60px 0; gap: 20px; }
   .case-copy { padding-top: 0; }
-  .brief-form, .cv-options, .cv-previews { grid-template-columns: 1fr; margin-top: 48px; }
+  .brief-form, .cv-selector { grid-template-columns: 1fr; }
+  .cv-viewer { margin-top: 48px; }
+  .cv-viewer-heading { align-items: flex-start; flex-direction: column; margin-top: 40px; }
+  .cv-viewer iframe { height: 145vw; min-height: 560px; }
   .brief-wide { grid-column: auto; }
   .about-grid { grid-template-columns: 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }

@@ -119,7 +119,7 @@ const PROJECTS: Project[] = [
   {
     id: "enterprise-rag",
     kicker: "PROJECT / RAG",
-    title: "ENTERPRISE RAG ENGINE",
+    title: "DOCUMENT RAG ENGINE",
     role: "Multilingual document question-answering",
     blurb: "A PDF question-answering system with local parsing, chunking and embeddings, hybrid retrieval, grounded LLM answers and citations in English, French and Arabic.",
     stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Sentence Transformers", "Groq Llama-3"],
@@ -260,7 +260,7 @@ const UI_COPY = {
     workEyebrow: "The work",
     workTitle: "Built to be used.",
     workNote: "Projects first. Research stays separate.",
-    products: "Projects",
+    products: "My projects",
     research: "Research",
     all: "Everything",
     open: "Open project",
@@ -285,7 +285,7 @@ const UI_COPY = {
     workEyebrow: "Le travail",
     workTitle: "Des projets utiles.",
     workNote: "Les projets d’abord. La recherche à part.",
-    products: "Projets",
+    products: "Mes projets",
     research: "Recherche",
     all: "Tout",
     open: "Ouvrir le projet",
@@ -682,7 +682,7 @@ export default function Home() {
                   role="tab"
                   aria-selected={projectFilter === filter}
                 >
-                  {filter === "all" ? copy.all : filter === "project" ? copy.products : copy.research}
+                  {filter === "all" ? copy.all : filter === "product" ? copy.products : copy.research}
                 </button>
               ))}
             </div>
