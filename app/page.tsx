@@ -682,7 +682,7 @@ export default function Home() {
                   role="tab"
                   aria-selected={projectFilter === filter}
                 >
-                  {filter === "all" ? copy.all : filter === "product" ? copy.products : copy.research}
+                  {filter === "all" ? copy.all : filter === "project" ? copy.products : copy.research}
                 </button>
               ))}
             </div>
