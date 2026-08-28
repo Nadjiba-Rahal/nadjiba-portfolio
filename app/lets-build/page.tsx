@@ -30,6 +30,24 @@ export default function LetsBuildPage() {
     }
   }
 
+  function emailInstead() {
+    const form = document.querySelector<HTMLFormElement>(".brief-form");
+    if (!form) return;
+    const data = new FormData(form);
+    const subject = `${isFrench ? "Demande de projet" : "Project brief"} from ${data.get("name") || "a potential client"}`;
+    const body = [
+      `Name: ${data.get("name") || ""}`,
+      `Email: ${data.get("email") || ""}`,
+      `${isFrench ? "Type" : "Request type"}: ${data.get("requestType") || ""}`,
+      `Budget: ${data.get("budget") || ""}`,
+      `${isFrench ? "Délai" : "Timeline"}: ${data.get("timeline") || ""}`,
+      "",
+      isFrench ? "Détails :" : "Project details:",
+      data.get("details") || "",
+    ].join("\n");
+    window.location.href = `mailto:rahalnadjiba5@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
   return (
     <main className="brief-page">
       <nav className="case-nav"><Link href="/" className="nav-mark"><span className="dot" style={{ backgroundImage: "url('/nadjiba-logo.png')" }} /> NADJIBA RAHAL</Link><SiteLanguage /><Link href="/#work" className="case-back">{isFrench ? "Retour" : "Back to portfolio"} <span>↗</span></Link></nav>
@@ -51,6 +69,9 @@ export default function LetsBuildPage() {
                 ? (isFrench ? "Message envoyé" : "Message sent")
                 : (isFrench ? "Envoyer le brief" : "Send project brief")}
           </button>
+            <button className="btn btn-ghost" type="button" onClick={emailInstead}>
+              {isFrench ? "M’écrire directement" : "Email me instead"}
+            </button>
           {status === "error" && <p role="alert">{errorMessage || (isFrench ? "Impossible d’envoyer le message. Réessayez." : "The message could not be sent. Please try again.")}</p>}
         </form>
       </div>
