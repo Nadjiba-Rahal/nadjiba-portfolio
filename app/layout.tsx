@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   title: "Nadjiba Rahal / AI & Software Builder",
   description: "Intelligent digital projects built with AI, software, data and automation.",
   icons: {
-    icon: [{ url: "/nadjiba-logo.png", type: "image/png" }],
-    apple: [{ url: "/nadjiba-logo.png", type: "image/png" }],
+    icon: [
+      { url: "/nadjiba-logo.png", type: "image/png" },
+      { url: "/nadjiba-logo.png", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/nadjiba-logo.png",
+    apple: "/nadjiba-logo.png",
   },
 };
 
